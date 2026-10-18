@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>هوون - متجر العائلة العصرية | +201004414446</title>
+<meta name="description" content="هوون 5 متاجر عربية: السعودية، مصر، الإمارات، الكويت، عمان. شحن مجاني ودفع عند الاستلام.">
+<meta name="theme-color" content="#00c2a8">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --p: #00c2a8;
+  --p-dark: #00a892;
+  --bg: #f8fffe;
+  --card-bg: #ffffff;
+  --t: #0f172a;
+  --m: #64748b;
+  --b: #e2e8f0;
+  --a: #ff3b30;
+  --radius: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cairo', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--bg);
+  color: var(--t);
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  padding-bottom: 90px;
+  background: var(--bg);
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.03);
+}
+
+/* Header */
+.h {
+  padding: 14px 16px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.logo i { color: var(--p); }
+
+.cart {
+  width: 40px;
+  height: 40px;
+  background: #f1f5f9;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.cart:active { transform: scale(0.95); }
+
+.count {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background: var(--a);
+  color: #fff;
+  font-size: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* Promo Banner */
+.promo {
+  margin: 12px 16px;
+  background: linear-gradient(135deg, var(--p), #00e5cc);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  color: #fff;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.promo h3 { font-size: 13px; font-weight: 800; }
+.promo p { font-size: 11px; opacity: 0.95; }
+
+/* Tabs */
+.section-title {
+  padding: 0 16px;
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 0 16px 8px;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+  min-width: 85px;
+  padding: 8px 12px;
+  background: #fff;
+  border: 1.5px solid var(--b);
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.tab.active {
+  border-color: var(--p);
+  background: var(--p);
+  color: #fff;
+}
+
+/* Search */
+.search {
+  margin: 8px 16px 12px;
+  background: #fff;
+  border: 1.5px solid var(--b);
+  border-radius: 12px;
+  padding: 8px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  background: transparent;
+}
+
+/* Store Cards */
+.grid {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  border: 1.5px solid var(--b);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-decoration: none;
+  color: var(--t);
+  transition: all 0.2s;
+}
+
+.card.active {
+  border-color: var(--p);
+  background: #f0fdfa;
+}
+
+.card.hide { display: none !important; }
+
+.icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #ccfbf1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.info { flex: 1; min-width: 0; }
+.info h4 { font-size: 13px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tag { font-size: 11px; color: var(--m); margin-top: 2px; }
+.meta { font-size: 10px; color: var(--p-dark); font-weight: 700; margin-top: 2px; }
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  background: var(--t);
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
+.footer-info {
+  background: #fff;
+  border: 1.5px dashed var(--p);
+  border-radius: var(--radius);
+  padding: 12px;
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 6px;
+}
+
+/* WhatsApp Drawer */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.drawer-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -8px 30px rgba(0,0,0,0.12);
+  padding: 20px;
+  z-index: 99;
+  max-height: 85vh;
+  overflow-y: auto;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer.show { transform: translateX(-50%) translateY(0); }
+
+.drawer-handle {
+  width: 36px;
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  margin: 0 auto 12px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--b);
+  border-radius: 10px;
+  margin-top: 8px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus { border-color: var(--p); }
+
+.btn {
+  width: 100%;
+  background: var(--p);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: 800;
+  font-size: 14px;
+  margin-top: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.btn:hover { background: var(--p-dark); }
+
+/* Navigation Bar */
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border-top: 1px solid var(--b);
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0 14px;
+  z-index: 10;
+}
+
+.ni {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  color: var(--m);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.ni.active { color: var(--p); }
+.ni i { font-size: 18px; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Header -->
+  <header class="h">
+    <div class="logo"><i class="fa-solid fa-bag-shopping"></i> هوون</div>
+    <div class="cart" onclick="openDrawer()" aria-label="السلة">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <div class="count">3</div>
+    </div>
+  </header>
+
+  <!-- Promo -->
+  <section class="promo">
+    <i class="fa-solid fa-truck-fast" style="font-size:26px"></i>
+    <div>
+      <h3>شحن مجاني + خصم 15% للطلبات فوق 150 ر.س</h3>
+      <p>الدفع عند الاستلام — خدمة العملاء: +201004414446</p>
+    </div>
+  </section>
+
+  <!-- Country Selection -->
+  <div class="section-title">اختر متجر دولتك (5 دول عربية)</div>
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-c="sa">🇸🇦 السعودية</button>
+    <button class="tab" data-c="eg">🇪🇬 مصر</button>
+    <button class="tab" data-c="ae">🇦🇪 الإمارات</button>
+    <button class="tab" data-c="kw">🇰🇼 الكويت</button>
+    <button class="tab" data-c="om">🇴🇲 عمان</button>
+  </div>
+
+  <!-- Search Input -->
+  <div class="search">
+    <i class="fa-solid fa-magnifying-glass" style="color:var(--m)"></i>
+    <input id="s" type="search" placeholder="ابحث في المتاجر..." oninput="filterStores()">
+  </div>
+
+  <!-- Store Cards Grid -->
+  <main class="grid" id="grid">
+    <a class="card active" data-c="sa" href="https://hoon2.dukan.shop?utm_source=hoonarab&utm_country=SA" target="_blank" rel="noopener">
+      <div class="icon">🇸🇦</div>
+      <div class="info">
+        <h4>السعودية - Hoon SA</h4>
+        <div class="tag">ريال سعودي — دفع عند الاستلام</div>
+        <div class="meta">🔥 الأكثر مبيعاً</div>
+      </div>
+      <div class="arrow"><i class="fa-solid fa-chevron-left"></i></div>
+    </a>
+
+    <a class="card hide" data-c="eg" href="https://hoon5.dukan.shop?utm_source=hoonarab&utm_country=EG" target="_blank" rel="noopener">
+      <div class="icon">🇪🇬</div>
+      <div class="info">
+        <h4>مصر - Hoon EG</h4>
+        <div class="tag">جنيه مصري — شحن خلال 24 ساعة</div>
+        <div class="meta">⚡ هامش 35% • +201004414446</div>
+      </div>
+      <div class="arrow"><i class="fa-solid fa-chevron-left"></i></div>
+    </a>
+
+    <a class="card hide" data-c="ae" href="https://hoon3.dukan.shop?utm_source=hoonarab&utm_country=AE" target="_blank" rel="noopener">
+      <div class="icon">🇦🇪</div>
+      <div class="info">
+        <h4>الإمارات - Hoon AE</h4>
+        <div class="tag">درهم إماراتي — خصم 15%</div>
+        <div class="meta">✨ متوسط السلة 320 درهم</div>
+      </div>
+      <div class="arrow"><i class="fa-solid fa-chevron-left"></i></div>
+    </a>
+
+    <a class="card hide" data-c="kw" href="https://hoon.dukan.shop?utm_source=hoonarab&utm_country=KW" target="_blank" rel="noopener">
+      <div class="icon">🇰🇼</div>
+      <div class="info">
+        <h4>الكويت - Hoon KW</h4>
+        <div class="tag">دينار كويتي — شحن سريع</div>
+        <div class="meta">🚚 كافة المحافظات</div>
+      </div>
+      <div class="arrow"><i class="fa-solid fa-chevron-left"></i></div>
+    </a>
+
+    <a class="card hide" data-c="om" href="https://hoon4.dukan.shop?utm_source=hoonarab&utm_country=OM" target="_blank" rel="noopener">
+      <div class="icon">🇴🇲</div>
+      <div class="info">
+        <h4>عمان - Hoon OM (المقر الرسمي)</h4>
+        <div class="tag">ريال عماني — 0% ضريبة</div>
+        <div class="meta">⭐ Startup — مسجلة ريادة عمان</div>
+      </div>
+      <div class="arrow"><i class="fa-solid fa-chevron-left"></i></div>
+    </a>
+
+    <div class="footer-info">
+      <b>Hoon Startup LLC Oman — +201004414446</b><br>
+      مسجلة ريادة عمان — إفصاح Affiliate Taager — 0% ضريبة<br>
+      الموقع الرسمي: hoonarab.carrd.co
+    </div>
+  </main>
+
+  <!-- Drawer Overlay -->
+  <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+
+  <!-- Drawer Container -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-handle"></div>
+    <h2 style="font-size:16px;font-weight:800">تأكيد الطلب السريع عبر واتساب</h2>
+    <p style="font-size:12px;color:var(--m);margin-top:2px">سيتم تحويل طلبك مباشرة للإدارة: +201004414446</p>
+
+    <input class="input" id="cName" type="text" placeholder="الاسم الكامل *">
+    <input class="input" id="cPhone" type="tel" placeholder="رقم الجوال مع رمز الدولة *" value="+20">
+    <input class="input" id="cAddr" type="text" placeholder="العنوان التفصيلي والمدينة *">
+
+    <button class="btn" onclick="sendWhatsAppOrder()">
+      <i class="fa-brands fa-whatsapp" style="font-size:18px"></i> تأكيد الطلب عبر واتساب
+    </button>
+    <div style="text-align:center;margin-top:12px;font-size:12px;cursor:pointer;color:var(--m)" onclick="closeDrawer()">إلغاء ✕</div>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="nav">
+    <div class="ni active"><i class="fa-solid fa-house"></i>الرئيسية</div>
+    <div class="ni" onclick="window.open('https://wa.me/201004414446','_blank')"><i class="fa-brands fa-whatsapp"></i>واتساب</div>
+  </nav>
+</div>
+
+<script>
+const ADMIN_WA = '201004414446';
+const tabs = document.querySelectorAll('.tab');
+const cards = document.querySelectorAll('.card');
+
+// Tab Switching Mechanism
+tabs.forEach(tab => {
+  tab.addEventListener('click', function() {
+    tabs.forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    filterStores();
+  });
+});
+
+// Store Filtering (Unified Search + Country Tab Sync)
+function filterStores() {
+  const activeCountry = document.querySelector('.tab.active').getAttribute('data-c');
+  const searchQuery = document.getElementById('s').value.trim().toLowerCase();
+
+  cards.forEach(card => {
+    const cardCountry = card.getAttribute('data-c');
+    const matchesCountry = cardCountry === activeCountry;
+    const matchesSearch = searchQuery === '' || card.textContent.toLowerCase().includes(searchQuery);
+
+    if (matchesCountry && matchesSearch) {
+      card.classList.remove('hide');
+      card.classList.add('active');
+    } else {
+      card.classList.add('hide');
+      card.classList.remove('active');
+    }
+  });
+}
+
+// Drawer Controls
+function openDrawer() {
+  document.getElementById('drawer').classList.add('show');
+  document.getElementById('overlay').classList.add('show');
+}
+
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('show');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+// WhatsApp Order Dispatch
+function sendWhatsAppOrder() {
+  const name = document.getElementById('cName').value.trim();
+  const phone = document.getElementById('cPhone').value.trim();
+  const address = document.getElementById('cAddr').value.trim();
+
+  if (name.length < 3) {
+    alert('يرجى إدخال الاسم الكامل بشكل صحيح');
+    return;
+  }
+  if (phone.length < 8) {
+    alert('يرجى إدخال رقم الجوال بشكل صحيح');
+    return;
+  }
+  if (address.length < 5) {
+    alert('يرجى إدخال العنوان التفصيلي');
+    return;
+  }
+
+  const activeCountry = document.querySelector('.tab.active').textContent.trim();
+  const message = `طلب جديد عبر Hoon Micro-App:\n\n👤 الاسم: ${name}\n📱 الجوال: ${phone}\n📍 العنوان: ${address}\n🌍 الدولة: ${activeCountry}\n\nالإدارة المباشرة: +${ADMIN_WA}`;
+
+  window.open(`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(message)}`, '_blank');
+  closeDrawer();
+}
+
+// Initialize on Load
+document.addEventListener('DOMContentLoaded', filterStores);
+</script>
+
+</body>
+</html>
