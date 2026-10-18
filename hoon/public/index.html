@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>هوون - متجر العائلة العصرية | +201004414446</title>
+<meta name="description" content="هوون 5 متاجر عربية السعودية مصر الإمارات الكويت عمان شحن مجاني الدفع عند الاستلام واتساب +201004414446">
+<meta name="theme-color" content="#00c2a8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--p:#00c2a8;--bg:#f8fffe;--t:#0f172a;--m:#64748b;--b:#e2e8f0;--a:#ff3b30}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
+body{background:var(--bg);color:var(--t)}
+button{font:inherit;color:inherit}
+.app{max-width:480px;margin:0 auto;min-height:100vh;padding-bottom:90px;background:var(--bg)}
+.h{padding:16px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.06);position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:22px;display:flex;gap:8px;align-items:center}.logo i{color:var(--p)}
+.cart{width:42px;height:42px;background:#f1f5f9;border:none;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px}
+.cart i{color:#25d366}
+.promo{margin:12px;background:linear-gradient(135deg,#00c2a8,#00e5cc);border-radius:20px;padding:16px;color:#fff;display:flex;gap:12px;align-items:center}
+.promo h3{font-size:14px;font-weight:800}.promo p{font-size:11px;opacity:.9}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:0 16px 8px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tab{min-width:85px;padding:10px;background:#fff;border:2px solid var(--b);border-radius:14px;text-align:center;cursor:pointer;flex-shrink:0;font-size:12px;font-weight:700}.tab.active{border-color:var(--p);background:var(--p);color:#fff}
+.search{margin:12px 16px;background:#fff;border:1.5px solid var(--b);border-radius:14px;padding:10px 14px;display:flex;gap:10px;align-items:center}.search input{border:none;outline:none;width:100%;font-size:13px;background:transparent}
+.grid{padding:0 16px;display:grid;gap:12px}
+.card{background:#fff;border-radius:18px;padding:14px;border:1px solid var(--b);display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--t)}.card.active{border-color:var(--p);background:#f0fdfa}.card.hide{display:none}
+.icon{width:56px;height:56px;border-radius:14px;background:#ccfbf1;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.info{flex:1;min-width:0}.info h4{font-size:14px;font-weight:800}.tag{font-size:11px;color:var(--m)}.meta{font-size:10px;color:var(--p);font-weight:700;margin-top:4px}
+.arrow{width:36px;height:36px;background:var(--t);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.empty{display:none;text-align:center;color:var(--m);font-size:13px;padding:20px}.empty.show{display:block}
+.overlay{position:fixed;inset:0;background:rgba(15,23,42,.45);opacity:0;pointer-events:none;transition:opacity .3s;z-index:98}.overlay.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:100%;max-width:480px;background:#fff;border-radius:28px 28px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.15);padding:20px;z-index:99;max-height:85vh;overflow-y:auto;transition:transform .35s;visibility:hidden}.drawer.show{transform:translateX(-50%) translateY(0);visibility:visible}
+.input{width:100%;padding:12px 14px;border:1.5px solid var(--b);border-radius:12px;margin-top:8px;font-size:13px;outline:none}.input:focus{border-color:var(--p)}.input.err{border-color:var(--a)}
+.input[type=tel]{direction:ltr;text-align:right}
+.msg{font-size:12px;color:var(--a);margin-top:8px;min-height:18px}
+.btn{width:100%;background:var(--p);color:#fff;border:none;border-radius:14px;padding:14px;font-weight:800;font-size:14px;margin-top:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.close{display:block;width:100%;background:none;border:none;text-align:center;margin-top:12px;font-size:12px;cursor:pointer;color:var(--m)}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;border-top:1px solid var(--b);display:flex;justify-content:space-around;padding:10px 0 20px;z-index:10}
+.ni{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;color:var(--m);cursor:pointer;background:none;border:none;text-decoration:none}.ni.active{color:var(--p)}.ni i{font-size:20px}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="h">
+  <div class="logo"><i class="fa-solid fa-bag-shopping"></i> هوون</div>
+  <button class="cart" type="button" onclick="openDrawer()" aria-label="الطلب عبر واتساب"><i class="fa-brands fa-whatsapp"></i></button>
+</header>
+
+<div class="promo"><i class="fa-solid fa-truck-fast" style="font-size:28px"></i><div><h3>شحن مجاني + خصم 15% فوق 150 ر.س</h3><p>الدفع عند الاستلام - واتساب +201004414446</p></div></div>
+
+<div style="padding:0 16px;font-weight:800;font-size:15px;margin-bottom:8px">اختر متجر دولتك - 5 دول</div>
+<div class="tabs" id="tabs" role="tablist">
+  <button type="button" class="tab active" data-c="sa" data-code="+966" role="tab" aria-selected="true">🇸🇦 السعودية</button>
+  <button type="button" class="tab" data-c="eg" data-code="+20" role="tab" aria-selected="false">🇪🇬 مصر</button>
+  <button type="button" class="tab" data-c="ae" data-code="+971" role="tab" aria-selected="false">🇦🇪 الإمارات</button>
+  <button type="button" class="tab" data-c="kw" data-code="+965" role="tab" aria-selected="false">🇰🇼 الكويت</button>
+  <button type="button" class="tab" data-c="om" data-code="+968" role="tab" aria-selected="false">🇴🇲 عمان</button>
+</div>
+
+<div class="search"><i class="fa-solid fa-magnifying-glass" style="color:var(--m)"></i><input id="s" type="search" placeholder="ابحث في كل المتاجر..." aria-label="بحث"></div>
+
+<div class="grid" id="grid">
+<a class="card active" data-c="sa" href="https://hoon2.dukan.shop?utm_source=hoonarab&utm_country=SA" target="_blank" rel="noopener"><div class="icon">🇸🇦</div><div class="info"><h4>السعودية - hoon2</h4><div class="tag">ريال سعودي - دفع عند الاستلام</div><div class="meta">🔥 الأكثر مبيعا</div></div><div class="arrow"><i class="fa-solid fa-chevron-left"></i></div></a>
+<a class="card hide" data-c="eg" href="https://hoon5.dukan.shop?utm_source=hoonarab&utm_country=EG" target="_blank" rel="noopener"><div class="icon">🇪🇬</div><div class="info"><h4>مصر - hoon5 - 01004414446</h4><div class="tag">جنيه مصري - 24 ساعة</div><div class="meta">⚡ +201004414446</div></div><div class="arrow"><i class="fa-solid fa-chevron-left"></i></div></a>
+<a class="card hide" data-c="ae" href="https://hoon3.dukan.shop?utm_source=hoonarab&utm_country=AE" target="_blank" rel="noopener"><div class="icon">🇦🇪</div><div class="info"><h4>الإمارات - hoon3</h4><div class="tag">درهم إماراتي - خصم 15%</div><div class="meta">✨ متوسط سلة 320 درهم</div></div><div class="arrow"><i class="fa-solid fa-chevron-left"></i></div></a>
+<a class="card hide" data-c="kw" href="https://hoon.dukan.shop?utm_source=hoonarab&utm_country=KW" target="_blank" rel="noopener"><div class="icon">🇰🇼</div><div class="info"><h4>الكويت - hoon</h4><div class="tag">دينار كويتي - شحن سريع</div><div class="meta">🚚 كل المناطق</div></div><div class="arrow"><i class="fa-solid fa-chevron-left"></i></div></a>
+<a class="card hide" data-c="om" href="https://hoon4.dukan.shop?utm_source=hoonarab&utm_country=OM" target="_blank" rel="noopener"><div class="icon">🇴🇲</div><div class="info"><h4>عمان - hoon4 - المقر الرسمي</h4><div class="tag">ريال عماني - 0% ضريبة - +201004414446</div><div class="meta">⭐ Startup - ريادة عمان</div></div><div class="arrow"><i class="fa-solid fa-chevron-left"></i></div></a>
+<div class="empty" id="empty">لا توجد نتائج مطابقة</div>
+<div style="background:#fff;border:1.5px dashed var(--p);border-radius:18px;padding:12px;font-size:11px;line-height:1.6"><b>Hoon Startup LLC Oman - +201004414446</b><br>مسجلة ريادة عمان - إفصاح Affiliate Taager - 0% ضريبة<br>الأصلي: <a href="https://hoonarab.carrd.co" target="_blank" rel="noopener" style="color:var(--p)">hoonarab.carrd.co</a></div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+  <div style="width:40px;height:4px;background:#e2e8f0;border-radius:10px;margin:0 auto 12px"></div>
+  <h2 id="dTitle" style="font-weight:800">الطلب عبر واتساب</h2>
+  <p style="font-size:12px;color:var(--m);margin-top:4px">سيتم الإرسال إلى +201004414446</p>
+  <input class="input" id="cName" placeholder="الاسم الكامل *" autocomplete="name">
+  <input class="input" id="cPhone" type="tel" placeholder="رقم الجوال *" value="+966" autocomplete="tel" inputmode="tel">
+  <input class="input" id="cAddr" placeholder="العنوان التفصيلي *" autocomplete="street-address">
+  <div class="msg" id="msg" aria-live="polite"></div>
+  <button class="btn" type="button" onclick="orderWA()"><i class="fa-brands fa-whatsapp"></i> تأكيد عبر واتساب +201004414446</button>
+  <button class="close" type="button" onclick="closeDrawer()">إغلاق ✕</button>
+</div>
+
+<nav class="nav">
+  <button type="button" class="ni active" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-house"></i>الرئيسية</button>
+  <button type="button" class="ni" onclick="openDrawer()"><i class="fa-solid fa-cart-shopping"></i>اطلب الآن</button>
+  <a class="ni" href="https://wa.me/201004414446" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>واتساب</a>
+</nav>
+</div>
+
+<script>
+var WA = '201004414446';
+var COUNTRY_NAMES = {sa:'السعودية', eg:'مصر', ae:'الإمارات', kw:'الكويت', om:'عمان'};
+var tabs = document.querySelectorAll('.tab');
+var cards = document.querySelectorAll('.card');
+var searchInput = document.getElementById('s');
+var phoneInput = document.getElementById('cPhone');
+var activeCountry = 'sa';
+
+// Single source of truth for visibility: search covers all stores, otherwise show the selected country.
+function render() {
+  var q = searchInput.value.trim().toLowerCase();
+  var visible = 0;
+  for (var i = 0; i < cards.length; i++) {
+    var c = cards[i].getAttribute('data-c');
+    var show = q ? cards[i].textContent.toLowerCase().indexOf(q) > -1 : c === activeCountry;
+    cards[i].classList.toggle('hide', !show);
+    cards[i].classList.toggle('active', c === activeCountry);
+    if (show) visible++;
+  }
+  document.getElementById('empty').classList.toggle('show', visible === 0);
+}
+
+function selectTab(tab) {
+  var prevCode = document.querySelector('.tab.active').getAttribute('data-code');
+  for (var j = 0; j < tabs.length; j++) {
+    tabs[j].classList.remove('active');
+    tabs[j].setAttribute('aria-selected', 'false');
+  }
+  tab.classList.add('active');
+  tab.setAttribute('aria-selected', 'true');
+  activeCountry = tab.getAttribute('data-c');
+  // Update the phone prefix only if the user hasn't typed a number yet.
+  var v = phoneInput.value.trim();
+  if (v === '' || v === prevCode) phoneInput.value = tab.getAttribute('data-code');
+  render();
+}
+
+for (var i = 0; i < tabs.length; i++) {
+  tabs[i].addEventListener('click', function () { selectTab(this); });
+}
+searchInput.addEventListener('input', render);
+
+function openDrawer() {
+  document.getElementById('drawer').classList.add('show');
+  document.getElementById('overlay').classList.add('show');
+  setTimeout(function () { document.getElementById('cName').focus(); }, 350);
+}
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('show');
+  document.getElementById('overlay').classList.remove('show');
+}
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+
+function fail(el, text) {
+  el.classList.add('err');
+  el.focus();
+  document.getElementById('msg').textContent = text;
+}
+
+function orderWA() {
+  var nameEl = document.getElementById('cName');
+  var addrEl = document.getElementById('cAddr');
+  [nameEl, phoneInput, addrEl].forEach(function (el) { el.classList.remove('err'); });
+  document.getElementById('msg').textContent = '';
+
+  var n = nameEl.value.trim();
+  var p = phoneInput.value.trim();
+  var a = addrEl.value.trim();
+  if (n.length < 3) return fail(nameEl, 'اكتب الاسم الكامل');
+  if (p.replace(/\D/g, '').length < 8) return fail(phoneInput, 'اكتب رقم جوال صحيح');
+  if (a.length < 5) return fail(addrEl, 'اكتب العنوان التفصيلي');
+
+  var msg = encodeURIComponent(
+    'طلب جديد Hoon\n👤 ' + n + '\n📱 ' + p + '\n📍 ' + a +
+    '\n🌍 ' + COUNTRY_NAMES[activeCountry] + ' (' + activeCountry.toUpperCase() + ')' +
+    '\nرقم الإدارة +201004414446'
+  );
+  var url = 'https://wa.me/' + WA + '?text=' + msg;
+  var win = window.open(url, '_blank');
+  if (!win) window.location.href = url; // fallback when popups are blocked
+  closeDrawer();
+}
+
+render();
+</script>
+</body>
+</html>
