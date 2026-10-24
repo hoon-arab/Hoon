@@ -1,0 +1,8 @@
+# Static site: no build step needed. Overrides the build command set in the UI.
+[build]
+  command = "echo 'Static site - no build needed'"
+  publish = "public"
+
+[build.environment]
+  # This is a plain HTML site, not Next.js; skip the Next.js runtime plugin enabled in the UI.
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
